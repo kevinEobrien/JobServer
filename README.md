@@ -1,6 +1,7 @@
 # Job Hunt Server
 
 ## About the app
+This is made as a tool to assist in tracking progress on your job hunt.
 
 ## Setup
 
