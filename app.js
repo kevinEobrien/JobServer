@@ -14,6 +14,70 @@ app.get("/", (request, response, next) => {
     message: "Testing out the job board server"
   });
 });
+app.get("/job", (request, response, next) => {
+  queries.listJobs().then(customers => {
+    response.status(201).json({customers});
+  }).catch(next);
+});
+  
+app.get("/job/:id", (request, response, next) => {
+  queries.reeadJob(request.params.id)
+    .then(customer => {
+      customer
+        ? response.status(201).json({customer})
+        : response.sendStatus(404);
+    }).catch(next);
+});
+  
+app.post("/job", (request, response, next) => {
+  queries.createJob(request.body).then(() => {
+    response.status(201).json("Welcome to Tactbook!");
+  }).catch(next);
+});
+  
+app.delete("/customer/:id", (request, response, next) => {
+  queries.deleteJob(request.params.id).then(() => {
+    response.status(201).json("Job Deleted");
+  }).catch(next);
+});
+  
+app.put("/job/:id", (request, response, next) => {
+  queries.updateCustomer(request.params.id, request.body).then(() => {
+    response.status(201).json("Your job has been updated!");
+  }).catch(next);
+});
+app.get("/customer", (request, response, next) => {
+  queries.listCustomers().then(customers => {
+    response.status(201).json({customers});
+  }).catch(next);
+});
+  
+app.get("/customer/:id", (request, response, next) => {
+  queries.readCustomer(request.params.id)
+    .then(customer => {
+      customer
+        ? response.status(201).json({customer})
+        : response.sendStatus(404);
+    }).catch(next);
+});
+  
+app.post("/customer", (request, response, next) => {
+  queries.createCustomer(request.body).then(() => {
+    response.status(201).json("Welcome to Tactbook!");
+  }).catch(next);
+});
+  
+app.delete("/customer/:id", (request, response, next) => {
+  queries.deleteCustomer(request.params.id).then(() => {
+    response.status(201).json("Sorry to see you leave. Come back any time");
+  }).catch(next);
+});
+  
+app.put("/customer/:id", (request, response, next) => {
+  queries.updateCustomer(request.params.id, request.body).then(() => {
+    response.status(201).json("Your profile has been updated!");
+  }).catch(next);
+});
 
 app.use((request, response, next) => {
   var err= new Error("Not found");
