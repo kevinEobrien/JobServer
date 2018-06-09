@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
           URL: "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword=Web+developer+National+Renewable+Energy+Lab&sc.keyword=Web+developer+National+Renewable+Energy+Lab&locT=C&locId=1148170&jobType=",
           notes: "",
           deadline: null,
-          applied: "[0]6/18/18",
+          applied: null,
           interview1: null,
           interview2: null,
           offer: ""
