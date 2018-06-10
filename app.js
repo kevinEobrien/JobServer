@@ -12,8 +12,9 @@ app.use(bodyParser.json());
 app.get("/", (request, response, next) => {
   response.json({
     message: "Testing out the job board server"
-  });
+  }).catch(next);
 });
+
 app.get("/job", (request, response, next) => {
   queries.listJobs().then(customers => {
     response.status(201).json({customers});
@@ -21,7 +22,7 @@ app.get("/job", (request, response, next) => {
 });
   
 app.get("/job/:id", (request, response, next) => {
-  queries.reeadJob(request.params.id)
+  queries.readJob(request.params.id)
     .then(customer => {
       customer
         ? response.status(201).json({customer})
@@ -31,11 +32,11 @@ app.get("/job/:id", (request, response, next) => {
   
 app.post("/job", (request, response, next) => {
   queries.createJob(request.body).then(() => {
-    response.status(201).json("Welcome to Tactbook!");
+    response.status(201).json("Job added!");
   }).catch(next);
 });
   
-app.delete("/customer/:id", (request, response, next) => {
+app.delete("/job/:id", (request, response, next) => {
   queries.deleteJob(request.params.id).then(() => {
     response.status(201).json("Job Deleted");
   }).catch(next);
@@ -46,6 +47,7 @@ app.put("/job/:id", (request, response, next) => {
     response.status(201).json("Your job has been updated!");
   }).catch(next);
 });
+
 app.get("/customer", (request, response, next) => {
   queries.listCustomers().then(customers => {
     response.status(201).json({customers});
@@ -63,7 +65,7 @@ app.get("/customer/:id", (request, response, next) => {
   
 app.post("/customer", (request, response, next) => {
   queries.createCustomer(request.body).then(() => {
-    response.status(201).json("Welcome to Tactbook!");
+    response.status(201).json("Welcome!");
   }).catch(next);
 });
   
