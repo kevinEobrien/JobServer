@@ -1,7 +1,7 @@
 # Job Hunt Server
 
 ## About the app
-This is made as a tool to assist in tracking progress on your job hunt.
+This is made as a tool to assist in tracking progress on your job hunt. Keep a detailed list of jobs wanted, dates applied, interview dates, and more!
 
 ## Setup
 
