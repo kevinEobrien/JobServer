@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.get("/", (request, response, next) => {
   response.json({
     message: "Testing out the job board server"
-  }).catch(next);
+  });
 });
 
 app.get("/job", (request, response, next) => {
